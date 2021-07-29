@@ -8,10 +8,20 @@
         - apache2
       update_cache: yes
   - name: file configuration copy
+  #ctrl + k + c  pour commenter 
+  #ctrl + k + u  pour decommenter 
+    # file: 
+    #   path: /var/www/html
+    #   node: '0755'
+    #   state: directory
     copy: 
       src: conf/index.html
       dest: /var/www/html
-
+  # - name:
+  #   service:
+  #     name: apache2
+  #     state: started
+  #     enabled: yes
   handlers:
     - name: restart apache2
       service: 
