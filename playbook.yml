@@ -4,11 +4,11 @@
   tasks:
 #  - name: update distribution
 #    apt:
-#      apt-get update: yes
+#      update_cache: yes
   - name: install git
     apt:
       name:
         - git
         - nodejs
         - npm
-      apt-get update: yes
+      update_cache: yes
