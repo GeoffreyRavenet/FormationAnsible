@@ -1,0 +1,19 @@
+---
+- name: all
+  become: true
+  tasks:
+  - name: install apache
+    apt:
+      name: 
+        - apache2
+      update_cache: yes
+  - name: file configuration copy
+    copy: 
+      src: conf/index.html
+      dest: /var/www/html
+
+  handlers:
+    - name: restart apache2
+      service: 
+        name: apache2 
+        state: restarted
