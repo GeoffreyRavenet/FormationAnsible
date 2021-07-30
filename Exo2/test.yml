@@ -20,11 +20,9 @@
       apt_repository:
         repo: deb https://download.docker.com/linux/debian bionic stable
         state: present
-    - name: installa docker
+    - name: install docker composents
       apt:
-        name: "{{item}}"
-        state: latest
-        loop:
+        name:
           - docker-ce
           - docker-ce-cli
           - containerd.io
