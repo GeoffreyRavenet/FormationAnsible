@@ -18,7 +18,7 @@
       #   name: image-{{item}}
       #   path: /{{item}}
       #   source: build
-      command : docker build -t {{item}} /{{item}}/.
+      command : docker build -t {{item}} /web_app/{{item}}/.
       loop:
         - vote
         - result
