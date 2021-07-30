@@ -10,7 +10,7 @@
           - curl
           - gnupg-agent
           - software-properties-common
-      update_cache: yes
+        update_cache: yes
 
     - name: ajout de la cle gpg
       apt-key:
