@@ -14,11 +14,11 @@
         - software-properties-common
     - name: aggiungi chiave GPG
       apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
+        url: https://download.docker.com/linux/debian/gpg
         state: present
     - name: aggiungi repository docker
       apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        repo: deb https://download.docker.com/linux/debian bionic stable
         state: present
     - name: installa docker
       apt:
