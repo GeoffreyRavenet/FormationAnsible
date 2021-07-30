@@ -65,13 +65,9 @@
         update_cache: yes
       when: ansible_facts['os_family'] == "Centos" 
 #######################################################################
-    - name: all compatibility
-      hosts: all
-      become: true
-      tasks:
-        # démarrage du service
-        - name: start docker service
-          service:
-            name: docker
-            state: started
-            enabled: yes
+    # démarrage du service
+    - name: start docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
