@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: droit pour le dossier
+      file: 
+        path: /web_app
+        node: '0755'
+        state: directory
+        recurse: true
+    - name: copier les sources des projets
+      copy: 
+        src: Exo2/web_app/
+        dest: /web_app/
+    - name: build image
+      docker-image:
+        name: image-{{item}}
+        path: /{{item}}
+        source: build
+      loop:
+        - vote
+        - result
+        - worker
