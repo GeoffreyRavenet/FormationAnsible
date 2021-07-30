@@ -24,5 +24,6 @@
         - result
         - worker
     - name: suppretion des dossiers
-      file: /web_app
-      state: absent
+      file:
+        path: /web_app
+        state: absent
