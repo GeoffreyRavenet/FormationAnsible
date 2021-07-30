@@ -16,6 +16,7 @@
       copy: 
         src: Exo2/web_app/
         dest: /web_app
+    - name: droit pour le dossier
       file: 
         path: /web_app
         node: '0755'
