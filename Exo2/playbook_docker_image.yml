@@ -23,3 +23,6 @@
         - vote
         - result
         - worker
+    - name: suppretion des dossiers
+      file: /web_app
+      state: absent
