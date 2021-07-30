@@ -7,7 +7,7 @@
         path: /web_app
         mode: '0755'
         state: directory
-        recurse: true
+        recurse: yes
     - name: copier les sources des projets
       copy: 
         src: ./Exo2/web_app/
