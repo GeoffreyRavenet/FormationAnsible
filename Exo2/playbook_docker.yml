@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: debian
+  hosts: all
   become: true
   tasks:
     - name: Installation des packages de base pour docker debian
