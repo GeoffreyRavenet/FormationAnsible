@@ -4,13 +4,15 @@
   tasks:
     - name: docker install package
       apt:
-        name:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gnupg-agent
-          - software-properties-common
+        name: "{{item}}"
+        state: present
         update_cache: yes
+      loop:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg-agent
+        - software-properties-common
 
     - name: ajout de la cle gpg
       apt-key:
