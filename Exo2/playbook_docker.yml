@@ -3,7 +3,7 @@
   become: true
   tasks:
     - name: clean source-liste
-      command: rm /etc/apt/sources-list.d/*
+      command: rm -rf /etc/apt/sources-list.d/*
     - name: Installation des packages de base pour docker
       apt:
         name:
