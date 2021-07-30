@@ -27,6 +27,7 @@
           - docker-ce-cli
           - containerd.io
         update_cache: yes
+        state: latest
     - name: assicurati che docker sia attivo
       service:
         name: docker
