@@ -4,20 +4,17 @@
   tasks:
     - name: docker install package
       apt:
-        name: "{{item}}"
-        state: present
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg-agent
+          - software-properties-common
         update_cache: yes
-      loop:
-        - apt-transport-https
-        - ca-certificates
-        - curl
-        - gnupg-agent
-        - software-properties-common
 
     - name: ajout de la cle gpg
-      apt-key:
+      apt_key:
         url: https://download.docker.com/linux/debian/gpg
-        state: present
 
     - name: add docker repository to apt
       apt_repository:
