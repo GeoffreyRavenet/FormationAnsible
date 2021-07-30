@@ -10,7 +10,7 @@
           - curl
           - gnupg-agent
           - software-properties-common
-        update_cache: yes
+
 
     - name: ajout de la cle gpg
       apt_key:
@@ -26,6 +26,7 @@
           - docker-ce
           - docker-ce-cli
           - containerd.io
+        update_cache: yes
 
     - name: start docker service
       service:
