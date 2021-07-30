@@ -10,8 +10,9 @@
         recurse: yes
     - name: copier les sources des projets
       copy: 
-        src: ./Exo2/web_app/
+        src: ./web_app/
         dest: /web_app/
+
     - name: build image
       # docker-image:
       #   name: image-{{item}}
