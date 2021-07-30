@@ -24,11 +24,11 @@
       apt:
         name: "{{item}}"
         state: latest
-        update_cache: yes
         loop:
           - docker-ce
           - docker-ce-cli
           - containerd.io
+        update_cache: yes
     - name: assicurati che docker sia attivo
       service:
         name: docker
