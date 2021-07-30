@@ -5,7 +5,7 @@
     - name: droit pour le dossier
       file: 
         path: /web_app
-        node: '0755'
+        mode: '0755'
         state: directory
     - name: copier les sources des projets
       copy: 
