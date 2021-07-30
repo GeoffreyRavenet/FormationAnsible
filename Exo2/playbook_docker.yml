@@ -1,5 +1,5 @@
 ---
-- name: debian
+- name: debian config
   hosts: all
   become: true
   tasks:
@@ -11,24 +11,26 @@
           - curl
           - gnupg
           - lsb-release
-
+      when: ansible_facts['os_family'] == "Debian"
     # Ajouter la clé gpg pour la sécurité des échanges avec le serveur des packages docker
     - name: ajout de la cle gpg
       apt_key:
         url: https://download.docker.com/linux/debian/gpg
         state: present
-
+      when: ansible_facts['os_family'] == "Debian"
     # ajouter le repos pour chercher les packages de docker
     - name: Ajout de l'adresse du repos pour les packages docker de debian
       apt_repository:
         repo: deb https://download.docker.com/linux/debian stretch stable
         state: present
+      when: ansible_facts['os_family'] == "Debian"
     - name: Index new repo into the cache
       apt:
         name: "*"
         state: latest
         update_cache: yes
         force_apt_get: yes
+      when: ansible_facts['os_family'] == "Debian"
     # installation des composants docker
     - name: install docker components
       apt:
@@ -37,12 +39,8 @@
           - docker-ce-cli
           - containerd.io
         update_cache: yes
-  when: ansible_facts['os_family'] == "Debian"
+      when: ansible_facts['os_family'] == "Debian"
 ########################################################################
-- name: Centos
-  hosts: all
-  become: true
-  tasks:
     - name: Installation des packages de base pour docker pour centos
       yum:
         name:
@@ -51,23 +49,26 @@
           - curl
           - gnupg
           - lsb-release
+      when: ansible_facts['os_family'] == "Centos" 
     # Ajouter la clé gpg pour la sécurité des échanges avec le serveur des packages docker
     - name: ajout de la cle gpg
       yum_key:
         url: https://download.docker.com/linux/debian/gpg
         state: present
-
+      when: ansible_facts['os_family'] == "Centos" 
     # ajouter le repos pour chercher les packages de docker
     - name: Ajout de l'adresse du repos pour les packages docker de debian
       yum_repository:
         repo: deb https://download.docker.com/linux/debian stretch stable
         state: present
+      when: ansible_facts['os_family'] == "Centos" 
     - name: Index new repo into the cache
       yum:
         name: "*"
         state: latest
         update_cache: yes
         force_apt_get: yes
+      when: ansible_facts['os_family'] == "Centos" 
     # installation des composants docker
     - name: install docker components
       yum:
@@ -76,7 +77,7 @@
           - docker-ce-cli
           - containerd.io
         update_cache: yes
-  when: ansible_facts['os_family'] == "Centos" 
+      when: ansible_facts['os_family'] == "Centos" 
 #######################################################################
 - name: all compatibility
   hosts: all
